@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  percona:
+    image: percona:latest
+    platform: linux/amd64
+    container_name: percona
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - percona_data:/var/lib/mysql
+
+  postgres:
+    image: postgres:latest
+    platform: linux/amd64
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  percona_data:
+  postgres_data:

@@ -1,0 +1,10 @@
+SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
+
+USE test_db;
+SET autocommit = 0;
+
+START TRANSACTION;
+INSERT INTO users (name)
+VALUES (CONCAT('Users', ' Test 1')),
+       (CONCAT('Users', ' Test 2'));
+COMMIT;
